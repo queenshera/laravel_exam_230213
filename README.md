@@ -12,7 +12,7 @@
 - verify if user is logged in, then profile page is visible 
 
 ### Task 5 - update name of user from profile page
-- create new post url /profile/update
+- create new put url /profile/update
 - create form on profile page to update name
 - when user clicks update button name of user is changed
 

@@ -12,6 +12,9 @@ class AuthenticationTest extends TestCase
 {
     public function test_task3()
     {
+        $response = $this->get('/register');
+        $response->assertOk();
+
         $newData = [
             'name' => 'Ashish Dake',
             'email' => 'dakeashish1997@gmail.com',
@@ -20,7 +23,7 @@ class AuthenticationTest extends TestCase
             'password_confirmation' => 'password'
         ];
         $response = $this->post('/register', $newData);
-        $response->assertOk();
+        $response->assertStatus(302);
 
         $this->assertDatabaseHas('users', ['mobile' => '8149940153']);
 
