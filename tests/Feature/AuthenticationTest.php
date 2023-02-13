@@ -20,7 +20,7 @@ class AuthenticationTest extends TestCase
             'password_confirmation' => 'password'
         ];
         $response = $this->post('/register', $newData);
-        $response->assertRedirect('/');
+        $response->assertOk();
 
         $this->assertDatabaseHas('users', ['mobile' => '8149940153']);
 
@@ -55,7 +55,7 @@ class AuthenticationTest extends TestCase
         $newData = [
             'name' => 'New name',
         ];
-        $this->actingAs($user)->put('/profile/update', $newData);
+        $this->put('/profile/update/'.$user->id, $newData);
         $this->assertDatabaseHas('users', $newData);
 
         $logoutResponse = $this->get('/logout');
